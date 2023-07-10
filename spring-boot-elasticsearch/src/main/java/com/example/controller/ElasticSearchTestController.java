@@ -33,20 +33,20 @@ public class ElasticSearchTestController {
      */
     @RequestMapping("searchPageByIndex")
     public Object searchPageByIndex(@RequestParam(value = "pageNo", required = false) Integer pageNo,
-				    @RequestParam(value = "pageSize", required = false) Integer pageSize,
-				    @RequestParam(value = "index", required = false) String index) {
-	pageNo = pageNo == null ? 1 : pageNo;
-	pageSize = pageSize == null ? 10 : pageSize;
-	index = StringUtils.isEmpty(index) ? INDEX : index;
-	List<UserInfo> dataList = elasticSearchRestClient.searchPageByIndex(index, pageNo, pageSize, UserInfo.class);
+                                    @RequestParam(value = "pageSize", required = false) Integer pageSize,
+                                    @RequestParam(value = "index", required = false) String index) {
+        pageNo = pageNo == null ? 1 : pageNo;
+        pageSize = pageSize == null ? 10 : pageSize;
+        index = StringUtils.isEmpty(index) ? INDEX : index;
+        List<UserInfo> dataList = elasticSearchRestClient.searchPageByIndex(index, pageNo, pageSize, UserInfo.class);
 
-	Map<String, Object> result = new HashMap<>();
-	result.put("index", index);
-	result.put("pageNo", pageNo);
-	result.put("pageSize", pageSize);
-	result.put("dataList", dataList);
-	log.info("[ searchPageByIndex ] >> index:{},pageNo:{},pageSize:{}", index, pageNo, pageSize);
-	return result;
+        Map<String, Object> result = new HashMap<>();
+        result.put("index", index);
+        result.put("pageNo", pageNo);
+        result.put("pageSize", pageSize);
+        result.put("dataList", dataList);
+        log.info("[ searchPageByIndex ] >> index:{},pageNo:{},pageSize:{}", index, pageNo, pageSize);
+        return result;
     }
 
 
