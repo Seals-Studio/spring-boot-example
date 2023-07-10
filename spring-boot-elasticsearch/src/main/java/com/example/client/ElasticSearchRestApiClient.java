@@ -31,6 +31,7 @@ import org.elasticsearch.common.xcontent.XContentBuilder;
 import org.elasticsearch.common.xcontent.XContentFactory;
 import org.elasticsearch.common.xcontent.XContentType;
 import org.elasticsearch.index.query.QueryBuilder;
+import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.index.reindex.DeleteByQueryRequest;
 import org.elasticsearch.rest.RestStatus;
 import org.elasticsearch.search.SearchHit;
@@ -349,11 +350,34 @@ public class ElasticSearchRestApiClient {
      * @param pageSize 页容量- Elasticsearch默认配置单次最大限制10000
      */
     public <T> List<T> searchPageByIndex(String index, Integer pageNo, Integer pageSize, Class<T> clazz) {
-        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
-        searchSourceBuilder.from(PageUtils.getStartRow(pageNo, pageSize));
-        searchSourceBuilder.size(pageSize);
+//        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+//        searchSourceBuilder.from(PageUtils.getStartRow(pageNo, pageSize));
+//        searchSourceBuilder.size(pageSize);
 
-        return this.searchByQuery(index, searchSourceBuilder, clazz);
+
+
+        // TODO：重新定义search after分页查询
+        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+
+
+        // 正则表达式
+        searchSourceBuilder.query();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//        return this.searchByQuery(index, searchSourceBuilder, clazz);
     }
 
     /**
