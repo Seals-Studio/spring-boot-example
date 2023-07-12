@@ -350,34 +350,11 @@ public class ElasticSearchRestApiClient {
      * @param pageSize 页容量- Elasticsearch默认配置单次最大限制10000
      */
     public <T> List<T> searchPageByIndex(String index, Integer pageNo, Integer pageSize, Class<T> clazz) {
-//        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
-//        searchSourceBuilder.from(PageUtils.getStartRow(pageNo, pageSize));
-//        searchSourceBuilder.size(pageSize);
-
-
-
-        // TODO：重新定义search after分页查询
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+        searchSourceBuilder.from(PageUtils.getStartRow(pageNo, pageSize));
+        searchSourceBuilder.size(pageSize);
 
-
-        // 正则表达式
-        searchSourceBuilder.query();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//        return this.searchByQuery(index, searchSourceBuilder, clazz);
+        return this.searchByQuery(index, searchSourceBuilder, clazz);
     }
 
     /**
